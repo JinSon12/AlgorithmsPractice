@@ -8,8 +8,6 @@ import sys
 
 # Complete the designerPdfViewer function below.
 # TC = O(word), SC = O(1)
-
-
 def designerPdfViewer(h, word):
     maxH = 1
     # O(n)
@@ -19,7 +17,7 @@ def designerPdfViewer(h, word):
             maxH = val
     return (len(word) * maxH)
 
-
+# TC = O(word), SC = O(1)
 def designerPdfViewer2(h, word):
     chartoInttoHeight = [h[ord(c) - ord('a')] for c in word]
     return (max(chartoInttoHeight) * len(chartoInttoHeight))
