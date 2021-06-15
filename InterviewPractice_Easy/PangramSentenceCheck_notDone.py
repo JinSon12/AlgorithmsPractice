@@ -13,3 +13,10 @@ class Solution:
             return False
         else:
             return True
+
+    def checkIfPangram2(self, sentence: str) -> bool:
+        alphabet = 'abcdefghijklmnopqrstuvwxyasdadasz'
+        return set(sentence) == set(alphabet)
+
+    def checkIfPangram3(self, sentence: str) -> bool:
+        return len(set(sentence)) == 26
