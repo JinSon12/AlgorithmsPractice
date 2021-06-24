@@ -6,3 +6,5 @@ class Solution:
         }
 
         print(conversion["I"])
+
+    def romanToInt(self, s: str) -> int:
