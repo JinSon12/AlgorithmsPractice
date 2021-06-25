@@ -10,3 +10,11 @@ class Solution:
         numStr = [str(x) for x in numList]
 
         return(int("".join(numStr)))
+
+    def maximum69NumberUsingEnumerate(self, num: int) -> int:
+        digits = list(str(num))
+        for index, digit in enumerate(digits):
+            if digit == '6':
+                digits[index] = '9'
+                break
+        return int(''.join(digits))
