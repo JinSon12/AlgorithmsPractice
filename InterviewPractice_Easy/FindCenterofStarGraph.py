@@ -14,7 +14,7 @@ class Solution:
             nodeDict[edges[i][0]] += 1
             nodeDict[edges[i][1]] += 1
 
-        # (max(nodeDict, key=nodeDict.get))
+        (max(nodeDict, key=nodeDict.get))
         # (max(k for k,v in nodeDict.items()))
         print(max(v for k, v in nodeDict.items()))
 
