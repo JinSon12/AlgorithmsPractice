@@ -18,3 +18,11 @@ class Solution:
                 digits[index] = '9'
                 break
         return int(''.join(digits))
+
+    def maximum69NumberUsingString(self, num: int) -> int:
+        num1 = list(str(num))
+        for i in range(len(num1)):
+            if num1[i] != '9':
+                num1[i] = '9'
+                break
+        return ''.join(num1)
