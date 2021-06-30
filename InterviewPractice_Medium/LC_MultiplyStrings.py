@@ -1,9 +1,39 @@
 class Solution:
-    def plusOne(self, digits: List[int]) -> List[int]:
-        strDig = "".join([str(num) for num in digits])
+    def multiply(sel, num1: str, num2: str) -> str:
+        return(str(int(num1) * int(num2)))
 
-        newDig = str(int(strDig)+1)
+    def multiplyV2(self, num1: str, num2: str) -> str:
+        carry = 0
+        firstTimes = 1
+        secTimes = 1
+        num = 0
 
-        newDiglist = [int(x) for x in newDig]
+        if len(num1) < len(num2):
+            num1, num2 = num2, num1
 
-        return (newDiglist)
+        for i in range(len(num2)-1, -1, -1):
+            for j in range(len(num1)-1, -1, -1):
+                # print(num1[j])
+                # print("carry", carry)
+                tempNum = int(num1[j]) * int(num2[i]) + carry
+                carry = 0
+                # print("tn", tempNum)
+
+                if tempNum >= 10:
+                    carry = tempNum // 10
+                    print("carry", carry)
+                    tempNum = tempNum % 10
+                # print(tempNum, secTimes, firstTimes)
+                num += tempNum * secTimes * firstTimes
+                # print("num", num)
+                secTimes *= 10
+                # print("secTimes", secTimes)
+            # print("firstTimes after running second loop", secTimes)
+            num += secTimes * carry * firstTimes
+            carry = 0
+            firstTimes *= 10
+
+            # print("num after running second loop", num)
+            secTimes = 1
+
+        return(str(num))
