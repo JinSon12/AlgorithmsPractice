@@ -9,19 +9,14 @@ class Solution:
 
         first, second = 0, 1
 
-        i = 1
+        i = 0
 
         while(i < len(s)):
-            print(i, "i")
-            print(total)
-            if conversion[s[i-1]] < conversion[s[i]]:
-                print(s[i-1], s[i])
-                total += conversion[s[i]] - conversion[s[i-1]]
+            if i+1 < len(s) and conversion[s[i]] < conversion[s[i+1]]:
+                total += conversion[s[i+1]] - conversion[s[i]]
                 i += 2
-                print(total)
             else:
-                print(s[i-1])
-                total += conversion[s[i-1]]
+                total += conversion[s[i]]
                 i += 1
 
         return(total)
