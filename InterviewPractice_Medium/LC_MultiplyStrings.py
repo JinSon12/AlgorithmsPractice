@@ -37,3 +37,16 @@ class Solution:
             secTimes = 1
 
         return(str(num))
+
+    def multiplyV3(self, num1: str, num2: str) -> str:
+        res = 0
+        carry1 = 1
+        dict = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4,
+                '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
+        for i in num1[-1::-1]:
+            carry2 = 1
+            for j in num2[-1::-1]:
+                res += dict[i]*dict[j]*carry2*carry1
+                carry2 *= 10
+            carry1 *= 10
+        return str(res)
