@@ -1,3 +1,5 @@
+# https://blog.naver.com/junhwen/222199842576
+# https://lenchen.medium.com/leetcode-50-pow-x-n-f4c37c41646d
 class Solution:
     def myPow(self, x: float, n: int) -> float:
         if n == 1:
