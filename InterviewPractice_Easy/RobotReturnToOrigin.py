@@ -1,6 +1,7 @@
 # https://leetcode.com/problems/robot-return-to-origin/
 from collections import Counter
 from collections import defaultdict
+import collections
 
 
 class Solution:
@@ -31,6 +32,7 @@ class Solution:
       # defaultDict 와 카운터 사용.
         # R, L , U, D
         init_pos = [0, 0]
+        pos_cnt = collections.defaultdict(int)
 
         if init_pos == [0, 0]:
             return True
