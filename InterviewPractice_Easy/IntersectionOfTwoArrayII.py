@@ -25,3 +25,16 @@ class Solution:
                     ld[k] -= 1
 
         return(result)
+
+    # speed wise no big difference,
+    # but cleaner code
+    def intersect_V2(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        result = []
+        d1 = Counter(nums1)
+
+        for i in nums2:
+            if i in d1 and d1[i] > 0:
+                result.append(i)
+                d1[i] -= 1
+
+        return(result)
