@@ -30,3 +30,15 @@ class Solution:
                 result.add(nums[i])
 
         return result
+
+    # realized that I misread some requirements,
+    # no need to think about whether the lists are 0 in length or not.
+    def intersection_V3(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        s = set(nums1)
+        result = set()
+
+        for i in nums2:
+            if i in s:
+                result.add(i)
+
+        return result
