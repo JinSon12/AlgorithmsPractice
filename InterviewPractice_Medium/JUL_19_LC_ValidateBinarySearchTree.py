@@ -19,6 +19,8 @@ the value of the leftMinBound and right MinBound : think about it starting from 
    and the right child is always bigger than the parent (including grandparent)
 
 - 수학적 귀납법과 BST 의 chracteristic 인 strict 한 child and parent's size difference 생각해보기. 
+
+reference: https://ooeunz.tistory.com/142
 """
 
 
