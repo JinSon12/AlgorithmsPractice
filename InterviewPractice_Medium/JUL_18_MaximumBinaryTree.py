@@ -1,17 +1,42 @@
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+from typing import List
+
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
 
 class Solution:
 
     """
-    worst case o(n^2)
+    O(n)
     """
 
     def constructMaximumBinaryTree(self, nums: List[int]) -> TreeNode:
+        stack = []
+
+        for num in nums:
+            node = TreeNode(num)
+
+            while stack and stack[-1].val < num:
+                node.left = stack.pop()
+
+            # 이때 stack에 원소가 존재한다면, stack[-1].val >= num
+            if stack:
+                stack[-1].right = node
+
+            stack.append(node)
+
+        return stack[0]
+
+    """
+    worst case o(n^2): in the case of fully sorted array. 
+    """
+
+    def constructMaximumBinaryTree_recursive(self, nums: List[int]) -> TreeNode:
         if not nums:
             return None
 
@@ -37,3 +62,9 @@ class Solution:
                 pos = i
 
         return (pos)
+
+
+stn = Solution()
+
+result = stn.constructMaximumBinaryTree([3, 2, 1, 6, 0, 5])
+print(result)
