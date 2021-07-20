@@ -23,6 +23,7 @@ class Solution:
 
 """ 
 MONOTONIC STACK. 
+https://justicehui.github.io/medium-algorithm/2019/01/01/monotoneStack/
 https://labuladong.gitbook.io/algo-en/ii.-data-structure/monotonicstack
 Further reference on the runtime of the for-while loop: 
 To analyze its time complexity, we need to look at it on a whole: 

@@ -11,7 +11,6 @@ class Solution:
         res = prices[:]
 
         for i in range(len(prices)):
-
             while stack and prices[stack[-1]] >= prices[i]:
                 prev_ind = stack.pop()
                 res[prev_ind] = prices[prev_ind] - prices[i]
