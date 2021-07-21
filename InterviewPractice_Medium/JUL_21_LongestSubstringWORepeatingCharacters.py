@@ -25,7 +25,10 @@ class Solution:
         return counter
 
     """
-    The goal is to use sliding window. 
+    The goal is to use *** sliding window ***. 
+    https://blog.fakecoding.com/archives/algorithm-slidingwindow/ 
+    https://velog.io/@kgh732/Python-으로-푸는-Leetcode3.-Longest-Substring-Without-Repeating-Characters
+    
     stretch the window as far until a repeated character appears 
     & the starting index of the window is before the index of that repeated character 
     (the previously occuring index of which is saved in the dictionary)
@@ -40,6 +43,7 @@ class Solution:
     thus N^2 traversal (which checks the elements that we have already checked) not needed. 
 
     """
+    # 40ms 99.71%
 
     def lengthOfLongestSubstring_ON(self, s: str) -> int:
         if len(s) < 2:
@@ -64,3 +68,20 @@ class Solution:
             max_len = max(max_len, win_len)
 
         return max_len
+
+    # Fastest runtime
+    def lengthOfLongestSubstring_V3(self, s: str) -> int:
+        if s == "":
+            return 0
+        a = ""
+        b = ""
+        for v in s:
+            if v not in a:
+                a += v
+            else:
+                if len(a) > len(b):
+                    b = a
+                a = a.split(v)[1]+v
+        if len(a) > len(b):
+            b = a
+        return len(b)
