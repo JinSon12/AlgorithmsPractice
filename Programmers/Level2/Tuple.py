@@ -69,9 +69,22 @@ def solution(s):
             d[temp] += 1
             temp = 0
 
-    key = d.keys()
+    # 이 부분이 하이라이트.
+    # values 를 기준으로 dictionary 에 존재하는 key 를 sorting 한다.
+#     for k in sorted(d, key=d.get, reverse=True):
+#         answer.append(k)
 
-    for k in sorted(d, key=d.get, reverse=True):
-        answer.append(k)
+    # Alternative solution:
+    nd = defaultdict(int)
+
+    # O(n): these items from d would become keys of the nd
+    keys2 = list(d.values())
+    keys2.sort(reverse=True)
+
+    for k in d:
+        nd[d[k]] = k
+
+    for k in keys2:
+        answer.append(nd[k])
 
     return answer
