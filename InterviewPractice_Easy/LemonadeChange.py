@@ -1,6 +1,10 @@
 class Solution:
 
+    """
+    Greedy 
+    """
     # brute force, very slow.
+
     def lemonadeChange(self, bills: List[int]) -> bool:
         dbills = {5: 0, 10: 0, 20: 0}
 
