@@ -1,0 +1,1 @@
+[https://velog.io/@doondoony/javascript-iife](https://velog.io/@doondoony/javascript-iife)
