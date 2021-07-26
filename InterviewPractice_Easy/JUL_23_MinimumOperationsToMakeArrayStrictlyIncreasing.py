@@ -1,5 +1,6 @@
 class Solution:
     """
+    Greedy 
     very similar to programmers joystick q. (but easier)
     """
 
