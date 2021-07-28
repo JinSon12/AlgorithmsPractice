@@ -4,6 +4,9 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+from InterviewPractice_Easy.Tree.TreeNode import TreeNode
+
+
 class Solution:
 
     # solved using DFS - recursion.
