@@ -67,7 +67,29 @@ class Solution:
 
         return count
 
+    # faster solution, 180ms, 92%
+    def findCircleNum_v2(self, isConnected: List[List[int]]) -> int:
+        count = 0
+        seen = set()
+
+        def dfs(isConnected, j):
+            for i in range(len(isConnected[j])):  # takes in length of row
+                # w/o isConnected[row][col] == 1,
+                # then it would just add all the i's
+                # and consider it as one graph (although they might not be connected)
+                if i not in seen and isConnected[j][i] == 1:
+                    isConnected[j][i] = 0
+                    seen.add(i)
+                    dfs(isConnected, i)
+
+        for i in range(len(isConnected)):
+            if i not in seen:
+                dfs(isConnected, i)
+                count += 1
+
+        return count
+
 
 stn = Solution()
-print(stn.findCircleNum(
-    [[1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 1], [1, 0, 1, 1]]))
+print(stn.findCircleNum_v2(
+    [[1, 0, 0], [0, 1, 0], [0, 0, 1]]))
