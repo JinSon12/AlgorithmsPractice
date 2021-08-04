@@ -9,6 +9,7 @@
 
 
 class Solution:
+    # 448ms, 70% faster
     def combine(self, n: int, k: int) -> List[List[int]]:
         res = []
 
