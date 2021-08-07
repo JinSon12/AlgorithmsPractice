@@ -8,8 +8,10 @@ class Solution:
         if head == None:
             return None
 
-        head = head
-        prev = head
+        sentinel = ListNode(0)
+        sentinel.next = head
+
+        prev = sentinel
         cur = head
         # nxt = head.next
 
@@ -18,10 +20,11 @@ class Solution:
             if cur.val == val:
                 prev.next = nxt
                 cur.next = None
-            prev = cur
+            else:
+                prev = cur
             cur = nxt
 
-        return head
+        return sentinel.next
 
 
 stn = Solution()
