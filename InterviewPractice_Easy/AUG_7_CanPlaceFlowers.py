@@ -33,3 +33,25 @@ class Solution:
                         flowerbed[i] = 1
 
         return n <= 0
+
+    # 140ms,
+    # instead of modifying the array,
+    # calculation done mathematically.
+    def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
+        if n == 0:
+            return True
+        pos = 0
+        count = 0
+        while pos < len(flowerbed):
+            if not flowerbed[pos]:
+                if pos == len(flowerbed)-1 or flowerbed[pos+1] == 0:
+                    count += 1
+                    pos += 2
+                else:
+                    pos += 3
+            else:
+                pos += 2
+
+            if count == n:
+                return True
+        return False
