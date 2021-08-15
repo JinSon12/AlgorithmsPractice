@@ -1,4 +1,10 @@
+# https://leetcode.com/problems/remove-linked-list-elements/
 
+""" 
+203. Remove Linked List Elements
+
+- use of sentinel nodes to safely remove head 
+"""
 
 from ListNode import ListNode
 

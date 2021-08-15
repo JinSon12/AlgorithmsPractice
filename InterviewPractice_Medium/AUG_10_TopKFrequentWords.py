@@ -8,6 +8,7 @@ KEY Insights
 
 - heapq
 
+복습 요
 """
 
 
@@ -34,6 +35,8 @@ class Solution:
         res = []
 
         ltup = list(d.items())
+        # https://leetcode.com/problems/top-k-frequent-words/discuss/923385/One-more-solution-in-Python-Easy
+        # '-' is used for sorting in decreasing order, works only for nums
         ltup.sort(key=lambda x: (-x[1], x[0]), reverse=True)
 
         for _ in range(k):
