@@ -1,5 +1,5 @@
 """
-A -> B
+16953 A -> B 
 
 숫자 A 에서 B 만드는 최소한의 연산 값을 구하기.
 
@@ -7,6 +7,8 @@ A -> B
 1) 2곱하기
 2) 1 을 수의 가장 오른쪽에 추가하기.
 
+BFS 
+time complexity O(2^n)
 """
 from collections import deque
 
