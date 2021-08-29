@@ -4,6 +4,9 @@
 - defaultDict 
 - counter 
 
+복습. 
+이분탐색, 
+카운터도 사용해서 구현
 """
 from collections import defaultdict
 import sys
