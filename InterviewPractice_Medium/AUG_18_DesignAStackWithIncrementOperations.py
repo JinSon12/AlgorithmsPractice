@@ -3,6 +3,10 @@
 """
 Design a Stack with Increment Operations 
 
+Faster Approach: 
+https://leetcode.com/problems/design-a-stack-with-increment-operation/discuss/843182/lee215's-solution-with-more-explanation
+
+복습 요 
 """
 
 
@@ -35,3 +39,26 @@ class CustomStack:
 # obj.push(x)
 # param_2 = obj.pop()
 # obj.increment(k,val)
+
+
+# fastest solution, 60ms
+class CustomStack1:
+    def __init__(self, maxSize: int):
+        self.max_size = maxSize
+        self.stk = []
+
+    def push(self, x: int) -> None:
+        if len(self.stk) < self.max_size:
+            self.stk.append([x, 0])
+
+    def pop(self) -> int:
+        if not self.stk:
+            return -1
+        if len(self.stk) > 1:
+            self.stk[-2][1] += self.stk[-1][1]
+        return sum(self.stk.pop())
+
+    def increment(self, k: int, val: int) -> None:
+        if not self.stk:
+            return
+        self.stk[min(len(self.stk)-1, k-1)][1] += val
