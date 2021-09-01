@@ -48,6 +48,11 @@ class RandomizedSet:
         """
         Get a random element from the set.
         """
+        """
+        Alternatively: 
+        def getRandom(self):
+          return random.choice(self.nums)
+        """
         print(self.set_arr, self.random_set)
         length = len(self.random_set)
         rand_num = random.randint(0, length-1)
