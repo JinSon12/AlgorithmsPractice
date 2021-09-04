@@ -1,3 +1,11 @@
+"""
+https://wikidocs.net/7037
+
+파이썬 문제 300제
+
+"""
+
+
 import random
 
 
