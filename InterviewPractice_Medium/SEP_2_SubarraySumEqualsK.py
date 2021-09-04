@@ -1,6 +1,7 @@
 """
 Subarray Sum equals K 
 
+- prefix sum
 
 """
 
