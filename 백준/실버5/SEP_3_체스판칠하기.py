@@ -97,6 +97,29 @@ def search_faster():
     print(min(num_min))
 
 
+def searchlogic():
+    result = 64
+    for i in range(N - 7):  # 체스판 행
+        for j in range(M - 7):  # 체스판 열
+            cnt_white = 0
+            cnt_black = 0
+            # 검사
+            for x in range(i, i+8):  # 8x8 행
+                for y in range(j, j+8):  # 8x8 열
+                    if (x + y) % 2 == 0:  # 홀수 대각선
+                        if grid[x][y] != "W":
+                            cnt_white += 1
+                        if grid[x][y] != "B":
+                            cnt_black += 1
+                    else:  # 짝수 대각선
+                        if grid[x][y] != "W":
+                            cnt_black += 1
+                        if grid[x][y] != "B":
+                            cnt_white += 1
+            result = min(result, cnt_white, cnt_black)
+    print(result)
+
+
 print(search(grid))
 
 """" 
