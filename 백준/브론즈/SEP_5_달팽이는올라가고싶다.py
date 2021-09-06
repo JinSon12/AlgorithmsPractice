@@ -13,4 +13,5 @@ def calculateDays(up, down, total):
         return 1 + (total - up) // (up - down) + 1
 
 
-print(calculateDays(5, 1, 6))
+up, down, total = map(int, input().split())
+print(calculateDays(up, down, total))
