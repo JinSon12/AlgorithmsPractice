@@ -12,11 +12,13 @@ https://leetcode.com/problems/jump-game/
 
 from collections import deque
 from typing import List
+from functools import lru_cache
 
 
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
         lastInd = len(nums) - 1
+        visited = set([0])
 
         def dfs(i):
             print(i)
@@ -32,7 +34,7 @@ class Solution:
                 # print(j + 1 + i, i)
                 if j+i < len(nums) and nums[j+i] == 0:
                     res = False
-                else:
+                elif j+i not in visited:
                     res = dfs(j+i)
                 if res == True:
                     return True
@@ -40,6 +42,28 @@ class Solution:
             return res
 
         return dfs(0)
+
+    # 3000ms
+    def canJump_cleaner(nums):
+        visited = set()
+
+        @cache
+        def dfs(ind):
+            # termination condition
+            if ind >= len(nums):
+                return True
+
+            if ind in visited:
+                return False
+
+            val = nums[ind]
+            res = False
+            for dist in range(val, 0, -1):
+                if ind + dist not in visited:
+                    res = dfs(dist + ind)
+                    visited.add(dist+ind)
+                    if res:
+                        return True
 
     def canJump_greedy(self, nums: List[int]) -> bool:
         lastInd = len(nums) - 1
@@ -65,6 +89,7 @@ class Solution:
 
         return dp[len(nums) - 1]
 
+    # 7000ms
     def canJump_bfs(self, nums: List[int]) -> bool:
         queue = deque([0])
         seen = set([0])
@@ -73,7 +98,7 @@ class Solution:
             index = queue.popleft()
             if index == len(nums) - 1:
                 return True
-            if nums[index] > len(nums) - index:
+            if nums[index] + index > len(nums):
                 return True
             for i in range(nums[index]+1):
                 jmp = index + i
