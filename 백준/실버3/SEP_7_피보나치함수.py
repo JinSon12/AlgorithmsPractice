@@ -4,6 +4,8 @@
 recursive 한 방식으로 fibonacci 수를 구한다. 
 이때, 1, 0 의 호출 횟수를 구하기. 
 
+DP
+
 """
 import sys
 input = sys.stdin.readline
