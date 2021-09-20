@@ -2,7 +2,7 @@
   Validate IP
 
   - Try and Except 
-  
+
   Key Idea: 
   
   1) form validity must be met => "X.X.X." 
@@ -19,6 +19,10 @@
 
   rikskesh@gmail.com
 tuananhnguyenus@gmail.com
+
+#에지 케이스를 잘 생각하기. 
+이를테면. 이때 입력 string 의 길이 (4자릿수? 입력 string 안에 숫자가 아닌것이 있을때? )
+생각해보기. 
 
 
   """
