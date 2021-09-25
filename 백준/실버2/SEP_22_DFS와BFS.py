@@ -15,9 +15,9 @@ for _ in range(E):
 
   graph[a].append(b)
   graph[b].append(a)
+  graph[a].sort()
+  graph[b].sort()
 
-graph.sort()
-print(graph)
 
 def printDFSResult(): 
   visited = set({SV})
@@ -29,11 +29,8 @@ def printDFSResult():
       if neigh not in visited: 
         visited.add(neigh)
         dfs(neigh)
-        # visited.remove(neigh)
   
-
   dfs(SV) 
-  print(visited)
   return res
 
 
@@ -54,7 +51,7 @@ def printBFSResult():
   
   return res
   
-
 print(*printDFSResult())
+print(*printBFSResult())
   
 

@@ -16,8 +16,11 @@ dirs = [[1,0], [-1,0], [0, -1], [0, 1]]
 max_safe_area = 0 
 
 def bfs(): 
-  temp_grid = copy.deepcopy(grid)
-  # cnt = 0 
+  # DEEP COPY takes long time!!!!!!!!
+  temp_grid = [[] * C for _ in range(R)]
+  for i in range(R): 
+    temp_grid[i] = grid[i][:]
+
   q = deque([])
   global max_safe_area
   # visited = [[0] * C for _ in range(R)]
@@ -53,16 +56,77 @@ def bfs():
 
 # dfs 의 응용을 통해서 grid 의 수를 바꾸어 (0 -> 1) 벽을 세운 것으로 간주한다. 
 def createWalls(cnt):
-  if cnt == 3: 
-    bfs() 
-    return 
+  # if cnt == 3: 
+  #   bfs() 
+  #   return 
   
   for i in range(R):
-    for j in range(C): 
+    for j in range(C-2): 
       if grid[i][j] == 0: 
         grid[i][j] = 1
-        createWalls(cnt + 1) 
+        grid[i][j+1] = 1
+        grid[i][j+2] = 1
+        bfs() 
         grid[i][j] = 0 
+        grid[i][j+1] = 0
+        grid[i][j+2] = 0
 
 createWalls(0)
 print(max_safe_area) 
+
+
+
+"""
+version 2. 
+Faster 
+"""
+
+from itertools import combinations
+import copy
+from collections import deque
+
+def v2(): 
+  dx = [0,0,-1,1]
+  dy = [1,-1,0,0]
+  n, m = map(int, input().split(" "))
+  board = [list(map(int, input().split(" "))) for _ in range(n)]
+
+  candidate = []
+  queue = deque()
+
+  ret = 0
+  for i in range(n):
+      for j in range(m):
+          if board[i][j] == 0:
+              candidate.append((i,j))
+          if board[i][j] == 2:
+              queue.append((i,j))
+
+  for can in list(combinations(candidate, 3)):
+      nboard = copy.deepcopy(board)
+      nqueue = copy.deepcopy(queue)
+      for ele in can:
+          nboard[ele[0]][ele[1]] = 1
+
+      while nqueue:
+          y, x = nqueue.popleft()
+
+          for i in range(4):
+              ny, nx = y + dy[i], x + dx[i]
+              if ny < 0 or nx < 0 or ny >= n or nx >= m:
+                  continue
+
+              if nboard[ny][nx] == 0:
+                  nboard[ny][nx] = 2
+                  nqueue.append((ny,nx))
+
+      count = 0
+      for i in range(n):
+          for j in range(m):
+              if nboard[i][j] == 0:
+                  count += 1
+
+      ret = max(ret, count)
+
+
+  print(ret)
