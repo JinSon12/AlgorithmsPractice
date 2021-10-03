@@ -2,6 +2,7 @@
 Longest Common Prefix 
 """
 
+# brute force, using for + while 
 def longestCommonPrefix(words): 
   commonPrefix = words[0]
 
@@ -30,3 +31,19 @@ def longestCommonPrefix(words):
   return commonPrefix
 
 print(longestCommonPrefix(["reflower","flow","flight"]))
+
+def longestCommonPrefix_listSlicing(words): 
+  common = words[0]
+
+  for word in range(1, len(words)): 
+    if len(word) < len(common): 
+      common = common[:len(word)]  # i 만큼만 정리해서 slice. 
+    
+    for i, char in enumerate(word): 
+      # 이부분이 하이라이트..
+      if common[i] != char: 
+        common = common[:i]
+
+  return common
+
+
