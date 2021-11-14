@@ -6,6 +6,7 @@
 
 """
 
+from collections import deque
 from InterviewPractice_Medium.DFS.Node import Node
 from typing import Deque
 
@@ -84,3 +85,24 @@ class Solution:
             return clone_node
 
         return recursion(node)
+
+    def cloneGraph_NOV2021(self, node: 'Node') -> 'Node':
+        if not node:
+            return node
+
+        res = {node: Node(node.val)}
+
+        def BFS():
+            q = deque([node])
+
+            while q:
+                n = q.popleft()
+
+                for neigh in n.neighbors:
+                    if neigh not in res:
+                        q.append(neigh)
+                        res[neigh] = Node(neigh.val)
+
+                    res[n].neighbors.append(res[neigh])
+        BFS()
+        return res[node]
